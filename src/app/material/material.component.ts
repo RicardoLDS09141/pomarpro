@@ -1,36 +1,31 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsuarioService } from '../../../services/usuario.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { validateHorizontalPosition, validateVerticalPosition } from '@angular/cdk/overlay';
+import { MaterialService } from '../services/material.service';
 
 @Component({
-  selector: 'app-cad-usuario',
-  templateUrl: './cad-usuario.component.html',
-  styleUrl: './cad-usuario.component.scss'
+  selector: 'app-material',
+  templateUrl: './material.component.html',
+  styleUrl: './material.component.scss'
 })
-export class CadUsuarioComponent {
+export class MaterialComponent {
+
 
   constructor(
-    private usuarioService:UsuarioService,
+    private materialService:MaterialService,
     private snackbar:MatSnackBar
   ){
-    this.buscaUsuarios()
   }
-
-//Inicializa o formulario
+//Inicializa o material
   formulario:FormGroup = new FormGroup({
     id:new FormControl(null),
     nome:new FormControl('', Validators.required),
-    sobrenome:new FormControl('', Validators.required),
-    endereco:new FormControl('', Validators.required),
-    telefone:new FormControl('', Validators.required),
-    email:new FormControl('', Validators.required),
-    login:new FormControl('', Validators.required),
-    
+    valor:new FormControl('', Validators.required),
+    fornecedor:new FormControl('', Validators.required),
+    tipo:new FormControl('', Validators.required),
     
   })
-
 //Métodos dos controles de formúlario
 onIncluir(){
   this.formulario.reset();
@@ -44,12 +39,12 @@ onSalvar(){
   //do ID (se for null, está inserido, senão está alterado)
 
   if(info.id == null){
-   //Irá inserir no banco de dados um usuário
-    this.usuarioService.addUsuario(info).subscribe({
+   //Irá inserir no banco de dados um material
+    this.materialService.addMaterial(info).subscribe({
       next:(resposta)=>{
         console.log(resposta);
         this.snackbar.open(
-          "Usúario adicionado com sucesso!",
+          "Material adicionado com sucesso!",
           "OK",{
             verticalPosition:'top',
             horizontalPosition:'end',
@@ -64,7 +59,7 @@ onSalvar(){
       }
       })
   }else{
-  //Irá alterar o uasuário no banco de dados
+  //Irá alterar o material no banco de dados
  
 }
 }
@@ -77,22 +72,9 @@ onCancelar(){
 
 }
 
-// Função para buscar as informações e usuários
-relatorio:any[] = [];
-
-buscaUsuarios(){
-  this.usuarioService.getUsuarios().subscribe({
-    next:(resposta)=>{
-      console.log(resposta);
-      this.relatorio = resposta.body;
-    },
-    error:(erro)=>{
-      console.log(erro);
-    }
-    
-  })
-
-}
+  }
 
 
-}
+
+
+

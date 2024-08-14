@@ -1,0 +1,54 @@
+<app-menu></app-menu>
+<div class="pagina">
+    <header>
+        <h1>Administração | Movimento </h1>
+    </header>
+    <form>
+        <div>
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Nome</mat-label>
+                <input matInput>
+            </mat-form-field>
+       
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Coluna</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <mat-form-field appearance="outline" color="primary">
+                <mat-label>Linha</mat-label>
+                <input matInput>
+            </mat-form-field>
+            
+        </div>
+
+        <div class="controles">
+            <button mat-raised-button [disabled]="">Incluir</button>
+            <button mat-raised-button [disabled]="">Salvar</button>
+            <button mat-raised-button [disabled]="">Cancelar</button>
+        </div> 
+    </form>
+ <div class="relatorio">
+    <h2>Movimento</h2>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Coluna</th>
+            <th>Linha</th>
+             
+        </tr>
+        <!--<tr *ngFor=" let usuario of material">
+            <td><button>Excluir</button></td>
+            <td>{{usuario.nome}} {{usuario.sobrenome}}</td>
+            <td>{{usuario.telefone}}</td>
+            <td>{{usuario.login}}</td>
+            <td>{{usuario.email}}</td>
+        </tr>-->
+    </table>
+
+
+    </div>
+</div>
+

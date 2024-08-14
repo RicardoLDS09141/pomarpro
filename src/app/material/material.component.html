@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <div class="pagina">
     <header>
-        <h1>Administração | Cadastro de usuários</h1>
+        <h1>Administração | Cadasto de Materiais</h1>
     </header>
     <form [formGroup]="formulario">
         <div>
@@ -9,38 +9,25 @@
                 <mat-label>Nome</mat-label>
                 <input matInput formControlName="nome">
             </mat-form-field>
-    
+       
             <mat-form-field appearance="outline" color="primary">
-                <mat-label>Sobrenome</mat-label>
-                <input matInput formControlName="sobrenome">
-            </mat-form-field>
-        </div>
-        
-        <div>
-            <mat-form-field appearance="outline" color="primary" class="grande">
-                <mat-label>Endereço</mat-label>
-                <input matInput formControlName="endereco">
+                <mat-label>Tipo</mat-label>
+                <input matInput formControlName="tipo">
             </mat-form-field>
         </div>
         
         <div>
             <mat-form-field appearance="outline" color="primary">
-                <mat-label>Telefone</mat-label>
-                <input matInput formControlName="telefone">
+                <mat-label>Valor</mat-label>
+                <input matInput formControlName="valor">
             </mat-form-field>
             
             <mat-form-field appearance="outline" color="primary">
-                <mat-label>E-mail</mat-label>
-                <input matInput formControlName="email">
+                <mat-label>Fornecedor</mat-label>
+                <input matInput formControlName="fornecedor">
             </mat-form-field>
         </div>
 
-        <div>
-            <mat-form-field appearance="outline" color="primary" class="grande">
-                <mat-label>Login</mat-label>
-                <input matInput formControlName="login">
-            </mat-form-field>
-        </div> 
         <div class="controles">
             <button mat-raised-button [disabled]="formulario.enabled" (click)="onIncluir()">Incluir</button>
             <button mat-raised-button [disabled]="formulario.invalid" (click)="onSalvar()">Salvar</button>
@@ -48,22 +35,22 @@
         </div> 
     </form>
  <div class="relatorio">
-    <h2>Usuários cadastrados</h2>
+    <h2>Cadasto de Materiais</h2>
     <table>
         <tr>
             <th>Ação</th>
             <th>Nome</th>
-            <th>Telefone</th>
-            <th>Login</th> 
-            <th>e-mail</th>  
+            <th>Tipo</th>
+            <th>Valor</th> 
+            <th>Fornecedor</th>  
         </tr>
-        <tr *ngFor=" let usuario of relatorio">
+        <!--<tr *ngFor=" let usuario of material">
             <td><button>Excluir</button></td>
             <td>{{usuario.nome}} {{usuario.sobrenome}}</td>
             <td>{{usuario.telefone}}</td>
             <td>{{usuario.login}}</td>
             <td>{{usuario.email}}</td>
-        </tr>
+        </tr>-->
     </table>
 
 

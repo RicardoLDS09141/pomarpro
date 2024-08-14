@@ -1,0 +1,61 @@
+<app-menu></app-menu>
+<div class="pagina">
+    <header>
+        <h1>Administração | Produtos</h1>
+    </header>
+    <form [formGroup]="produto">
+    <div>
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Tipo</mat-label>
+            <input matInput formControlName="tipo" type="text">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Valor</mat-label>
+            <input matInput type="number" formControlName="valor">
+        </mat-form-field>
+    </div> 
+        
+    <div>
+         <mat-form-field appearance="outline" color="primary">
+             <mat-label>Descrição</mat-label>
+             <input matInput formControlName="descricao" type="text">
+         </mat-form-field>
+
+        <mat-form-field appearance="outline" color="primary">
+             <mat-label>Unidade de Medida</mat-label>
+             <input matInput formControlName="unid_medida" type="text">
+        </mat-form-field>
+    </div>
+       
+    </form>
+    <div class="controles">
+        <button mat-stroked-button [disabled]="produto.enabled" (click)="onIncluir()" color="primary">Incluir</button>
+        <button mat-stroked-button [disabled]="produto.invalid" (click)="onSalvar()">Salvar</button>
+        <button mat-stroked-button [disabled]="produto.disabled" (click)="onCancelar()">Cancelar</button>
+    </div>
+    
+<div class="relatorio">
+    <h2>Produtos cadastrados</h2>
+    <table>
+        <tr>
+            <th>Ação</th>
+            
+            <th>Tipo</th>
+            <th>valor</th>
+            <th>Descrição</th>
+            <th>Unidade de Medida</th>
+          
+        </tr>
+        <tr *ngFor="let produto of relatorio">
+            <td><button>Excluir</button></td>
+           
+            <td>{{produto.tb_tipo_id}}</td>
+            <td>{{produto.valor}}</td>
+            <td>{{produto.descricao}}</td>
+            <td>{{produto.unid_medida}}</td>
+        </tr>
+    </table>
+</div>
+</div>
+

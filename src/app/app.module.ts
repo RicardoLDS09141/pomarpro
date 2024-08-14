@@ -14,6 +14,12 @@ import { CadUsuarioComponent } from './pages/usuario/cad-usuario/cad-usuario.com
 import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MaterialComponent } from './material/material.component';
+import { PomarcadComponent } from './pages/pomarcad/pomarcad.component';
+import { ProdutoComponent } from './pages/produto/produto.component';
+import { MovimentoComponent } from './pages/movimento/movimento.component';
+import { ColheitaComponent } from './pages/colheita/colheita.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,12 @@ import {MatButtonModule} from '@angular/material/button';
     LoginComponent,
     HomeComponent,
     MenuComponent,
-    CadUsuarioComponent
+    CadUsuarioComponent,
+    MaterialComponent,
+    PomarcadComponent,
+    ProdutoComponent,
+    MovimentoComponent,
+    ColheitaComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +42,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
   
   ],
   providers: [provideHttpClient(), provideAnimationsAsync()],
