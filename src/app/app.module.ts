@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './page/login/login.component';
@@ -15,11 +14,15 @@ import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { MaterialComponent } from './material/material.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { PomarcadComponent } from './pages/pomarcad/pomarcad.component';
 import { ProdutoComponent } from './pages/produto/produto.component';
 import { MovimentoComponent } from './pages/movimento/movimento.component';
 import { ColheitaComponent } from './pages/colheita/colheita.component';
+import { MaterialComponent } from './pages/material/material.component';
+import { ArvoreComponent } from './pages/arvore/arvore.component';
+import { provideNativeDateAdapter } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { ColheitaComponent } from './pages/colheita/colheita.component';
     PomarcadComponent,
     ProdutoComponent,
     MovimentoComponent,
-    ColheitaComponent
+    ColheitaComponent,
+    ArvoreComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +47,10 @@ import { ColheitaComponent } from './pages/colheita/colheita.component';
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatDatepickerModule
   
   ],
-  providers: [provideHttpClient(), provideAnimationsAsync()],
+  providers: [provideHttpClient(), provideAnimationsAsync(), provideNativeDateAdapter()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

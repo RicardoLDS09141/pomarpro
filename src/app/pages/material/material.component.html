@@ -3,7 +3,7 @@
     <header>
         <h1>Administração | Cadasto de Materiais</h1>
     </header>
-    <form>
+    <form [formGroup]="formulario">
         <div>
             <mat-form-field appearance="outline" color="primary">
                 <mat-label>Nome</mat-label>
@@ -29,9 +29,9 @@
         </div>
 
         <div class="controles">
-            <button mat-raised-button [disabled]=>Incluir</button>
-            <button mat-raised-button [disabled]=>Salvar</button>
-            <button mat-raised-button [disabled]=>Cancelar</button>
+            <button mat-raised-button [disabled]="formulario.enabled" (click)="onIncluir()">Incluir</button>
+            <button mat-raised-button [disabled]="formulario.invalid" (click)="onSalvar()">Salvar</button>
+            <button mat-raised-button [disabled]="formulario.disabled" (click)="onCancelar()">Cancelar</button>
         </div> 
     </form>
  <div class="relatorio">
@@ -44,13 +44,13 @@
             <th>Valor</th> 
             <th>Fornecedor</th>  
         </tr>
-        <!--<tr *ngFor=" let usuario of material">
+        <tr *ngFor=" let material of relatorio">
             <td><button>Excluir</button></td>
-            <td>{{usuario.nome}} {{usuario.sobrenome}}</td>
-            <td>{{usuario.telefone}}</td>
-            <td>{{usuario.login}}</td>
-            <td>{{usuario.email}}</td>
-        </tr>-->
+            <td>{{material.nome}}</td> 
+            <td>{{material.tipo}}</td>
+            <td>{{material.valor}}</td>
+            <td>{{material.fornecedor}}</td>
+        </tr>
     </table>
 
 
