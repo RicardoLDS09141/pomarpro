@@ -1,58 +1,57 @@
+
 <app-menu></app-menu>
-<div class="pagina">
+<div class="pag">
     <header>
-        <h1>Administração | Cadasto de Materiais</h1>
+        <h1>Administração | Materiais</h1>
     </header>
-    <form [formGroup]="formulario">
-        <div>
-            <mat-form-field appearance="outline" color="primary">
-                <mat-label>Nome</mat-label>
-                <input matInput formControlName="nome">
-            </mat-form-field>
-       
-            <mat-form-field appearance="outline" color="primary">
-                <mat-label>Tipo</mat-label>
-                <input matInput formControlName="tipo">
-            </mat-form-field>
-        </div>
-        
-        <div>
-            <mat-form-field appearance="outline" color="primary">
-                <mat-label>Valor</mat-label>
-                <input matInput formControlName="valor">
-            </mat-form-field>
-            
-            <mat-form-field appearance="outline" color="primary">
-                <mat-label>Fornecedor</mat-label>
-                <input matInput formControlName="fornecedor">
-            </mat-form-field>
-        </div>
-
-        <div class="controles">
-            <button mat-raised-button [disabled]="formulario.enabled" (click)="onIncluir()">Incluir</button>
-            <button mat-raised-button [disabled]="formulario.invalid" (click)="onSalvar()">Salvar</button>
-            <button mat-raised-button [disabled]="formulario.disabled" (click)="onCancelar()">Cancelar</button>
-        </div> 
+    <form [formGroup]="material">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Tipo</mat-label>
+            <input matInput formControlName="tipo" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Valor</mat-label>
+            <input matInput type="number" formControlName="valor">
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Fornecedor</mat-label>
+            <input matInput formControlName="fornecedor" type="text">
+        </mat-form-field>
     </form>
- <div class="relatorio">
-    <h2>Cadasto de Materiais</h2>
-    <table>
-        <tr>
-            <th>Ação</th>
-            <th>Nome</th>
-            <th>Tipo</th>
-            <th>Valor</th> 
-            <th>Fornecedor</th>  
-        </tr>
-        <tr *ngFor=" let material of relatorio">
-            <td><button>Excluir</button></td>
-            <td>{{material.nome}}</td> 
-            <td>{{material.tipo}}</td>
-            <td>{{material.valor}}</td>
-            <td>{{material.fornecedor}}</td>
-        </tr>
-    </table>
+   
 
-
+    <div class="controles">
+        <button mat-stroked-button [disabled]="material.enabled" (click)="onIncluir()" color="primary">Incluir</button>
+        <button mat-stroked-button [disabled]="material.invalid" (click)="onSalvar()">Salvar</button>
+        <button mat-stroked-button [disabled]="material.disabled" (click)="onCancelar()">Cancelar</button>
     </div>
+    <div class="relatorio">
+        <h2>Materiais cadastrados</h2>
+        <table>
+            <tr>
+                <th>Ação</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>valor</th>
+                <th>fornecedor</th>
+              
+            </tr>
+            <tr *ngFor="let material of relatorio">
+                <td><button>Excluir</button></td>
+                <td>{{material.nome}}</td>
+                <td>{{material.valor}}</td>
+                <td>{{material.fornecedor}}</td>
+                <td>{{material.tb_tipo_id}}</td>
+                
+            </tr>
+        </table>
+    </div>
+    
 </div>
+
+
+

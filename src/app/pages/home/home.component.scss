@@ -1,0 +1,70 @@
+header{
+    height: 15vh;
+    h1{
+        font-size: 1.5em;
+    }
+}
+
+mat-form-field{
+    margin-right: 15px;
+    width: 20vw;
+}
+form{
+    
+    height: 40vw;
+
+    width: 50vw;
+}
+.grande{
+    width: 40.8vw;
+}
+.controles{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: -37%;
+}
+
+.controles button{
+    margin-top: 6px;
+    width: 5vw;
+}
+
+.controles button:hover {
+    color:rgba(0, 0, 0, 0.849) ;
+    background-color:rgba(72, 255, 0, 0.849) ;
+     
+     transition-duration: 1s;
+     cursor: help;
+ }
+ 
+
+ .relatorio{
+    width: 80% ;
+    height: 30% ;
+    padding: 10px;
+    h2{
+        font-family: arial;
+  
+    }
+    table{
+        width: 100%;
+        font-family:Arial ;
+        th{
+            border-bottom: 1px #DDD solid ;
+            padding: 3px;
+            text-align: left;
+        }
+        td{
+          border-bottom: #CCC solid;
+          padding: 3px;
+        }
+  
+    }
+  }
+  
+.txt{
+    font-style: italic;
+    font-family: 'Sprite Graffiti', sans-serif;
+    font-size: xx-large;
+}

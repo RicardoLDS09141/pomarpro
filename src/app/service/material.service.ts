@@ -10,7 +10,7 @@ export class MaterialService {
  
 
   constructor(private http:HttpClient) { }
-  public addMaterial(info:any):Observable<any>{
+  public addmaterial(info:any):Observable<any>{
     return this.http.post("http://localhost:3000/material/add",
     {info},
     {observe:'response'})

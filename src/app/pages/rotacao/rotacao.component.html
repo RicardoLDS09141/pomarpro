@@ -1,0 +1,58 @@
+
+<app-menu></app-menu>
+<div class="pag">
+    <header>
+        <h1>Administração | Movimento</h1>
+    </header>
+    <form [formGroup]="rotacao">
+
+      
+
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Tipo</mat-label>
+            <input matInput formControlName="tb_tipo_id" type="number">
+        </mat-form-field>
+        <div>
+        <mat-form-field appearance="outline" color="primary">
+            
+            <mat-label>Produto</mat-label>
+            <input matInput formControlName="produto" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Quantidade</mat-label>
+            <input matInput formControlName="quantidade" type="number">
+        </mat-form-field>
+      
+    </div>
+   
+
+    <div class="controles">
+        <button mat-stroked-button [disabled]="rotacao.enabled" (click)="onIncluir()" color="primary">Incluir</button>
+        <button mat-stroked-button [disabled]="rotacao.invalid" (click)="onSalvar()">Salvar</button>
+        <button mat-stroked-button [disabled]="rotacao.disabled" (click)="onCancelar()">Cancelar</button>
+    </div>
+
+
+<div class="relatorio">
+    <h2>Movimentações cadastrados</h2>
+    <table>
+        <tr>
+            <th>Ação</th>
+            <th>Produto</th>
+            <th>Tipo</th>
+            <th>Quantidade</th>
+           
+          
+        </tr>
+        <tr *ngFor="let rotacao of relatorio">
+            <td><button>Excluir</button></td>
+            <td>{{rotacao.ds_produto}}</td>
+            <td>{{rotacao.ds_tipo}}</td>
+            
+          
+           
+        </tr>
+    </table>
+</div>
+
+

@@ -9,14 +9,11 @@ export class AutenticacaoService {
 
   constructor(private http:HttpClient) { }
 
-  //Autenticar 
+  //autenticar
   public autenticaUsuario(usuario:string,senha:string):Observable<any>{
     return this.http.post('http://localhost:3000/usuario/autenticar',{usuario,senha},{observe:'response'})
-
   }
 
 
 
 }
-
-

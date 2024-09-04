@@ -16,7 +16,7 @@ export class ArvoreService {
     {observe:'response'})
   }
 
-  public getArvore():Observable<any>{
+  public getarvore():Observable<any>{
     return this.http.get('http://localhost:3000/arvore/buscaTodos',
     {observe:'response'})
   }

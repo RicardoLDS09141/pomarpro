@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { produtoService } from '../../services/produto.service';
+import { produtoService } from '../../service/produto.service';
 
 
 
@@ -102,5 +102,11 @@ export class ProdutoComponent {
   }
 
   }
+
+
+
+
+
+
 
 

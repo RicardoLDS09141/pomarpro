@@ -1,30 +1,26 @@
 <div class="sidebar">
     <img src="/assets/img/logo ricardo.png" class="logo"/>
     <nav class="aa">
-        <a routerLink="/home">Home</a>
+        
+        <details>
+            <summary routerLink="/home" class="/primero">Home</summary>
+            
+        </details>
         <details>
             <summary>Administração</summary>
-            <a routerLink="/cadUsuario">Usuário</a>
-
-            <a routerLink="/cadMaterial">Material</a>
-
-            <a routerLink="/cadProduto">Produto</a>
-
-        
+            <a routerLink="/cadUsuario" >Usuário</a>
+            <a routerLink="/material">Material</a>
+            <a routerLink="/produto">Produto</a>
         </details>
-        <details>
+        <details class="ultimo">
             <summary>Pomar</summary>
-          
-            <a routerLink="/cadPomarcad">Cadastro</a>
-
-            <a routerLink="/cadMovimento">Movimento</a>
-
-            <a routerLink="/cadColheita">Colheita</a>
-
-            <a routerLink="/cadArvore">Árvore</a>
-            
-           
+            <a routerLink="/pomarcad">Cadastro</a>
+            <a routerLink="/rotacao">Movimento</a>
+            <a routerLink="/colheita">Colheita</a>
+            <a routerLink="/arvore">Arvore</a>
         </details>
+     
+        
     </nav>
     <ul>
         <li class="aaa"><a href="Sair">____ Sair____</a></li>

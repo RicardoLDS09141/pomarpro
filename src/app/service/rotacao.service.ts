@@ -5,19 +5,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class MaterialService {
+export class rotacaoService {
 
  
 
   constructor(private http:HttpClient) { }
-  public addMaterial(info:any):Observable<any>{
-    return this.http.post("http://localhost:3000/material/add",
+  public addrotacao(info:any):Observable<any>{
+    return this.http.post("http://localhost:3000/rotacao/add",
     {info},
     {observe:'response'})
   }
 
-  public getMaterial():Observable<any>{
-    return this.http.get('http://localhost:3000/material/buscaTodos',
+  public getrotacao():Observable<any>{
+    return this.http.get('http://localhost:3000/rotacao/buscaTodos',
     {observe:'response'})
   }
 

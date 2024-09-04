@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UsuarioService } from '../../../services/usuario.service';
+import { UsuarioService } from '../../../service/usuario.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { validateHorizontalPosition, validateVerticalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-cad-usuario',
@@ -14,85 +13,96 @@ export class CadUsuarioComponent {
   constructor(
     private usuarioService:UsuarioService,
     private snackbar:MatSnackBar
+    
+    
   ){
     this.buscaUsuarios()
   }
 
-//Inicializa o formulario
-  formulario:FormGroup = new FormGroup({
+
+  //inicia o formulario
+  formulario:FormGroup = new FormGroup({ 
     id:new FormControl(null),
     nome:new FormControl('', Validators.required),
-    sobrenome:new FormControl('', Validators.required),
-    endereco:new FormControl('', Validators.required),
-    telefone:new FormControl('', Validators.required),
-    email:new FormControl('', Validators.required),
-    login:new FormControl('', Validators.required),
-    
-    
+    sobrenome:new FormControl('',Validators.required ),
+    endereco:new FormControl('',Validators.required),
+    telefone:new FormControl('',Validators.required),
+    email:new FormControl('',Validators.required),
+    login:new FormControl('',Validators.required),
+   
+
+
   })
 
-//Métodos dos controles de formúlario
-onIncluir(){
-  this.formulario.reset();
-  this.formulario.enable();
+  //metodos dos controles do formulario
+  onIncluir(){
+    this.formulario.reset();
+    this.formulario.enable();
+  }
 
-}
-onSalvar(){
-  //Guarda as informações em uma variável pra melhorar o acesso
-  let info = this.formulario.value;
-  //Verificar se está inserida ou alternando com base no valor
-  //do ID (se for null, está inserido, senão está alterado)
+ 
+  onSalvar(){
+    //guarda as informacoes em uma variavel pra melhorar o processo
+    let info = this.formulario.value;
+    //verifica se esta inserindo ou alterando com base no valor do id (se for null, esta inserindo, senao esta alterando)
 
-  if(info.id == null){
-   //Irá inserir no banco de dados um usuário
-    this.usuarioService.addUsuario(info).subscribe({
+
+    if(info.id == null){
+      //ira inserir no banco de dados um usuario
+      this.usuarioService.addUsuario(info).subscribe({
+        next:(resposta)=>{
+          console.log(resposta)
+          this.snackbar.open(
+            "Usuário adicionado com sucesso",
+            "OK",{
+              verticalPosition:'top',
+              horizontalPosition:'end',
+              duration:3000
+            }
+          )
+          this.onCancelar()
+        },
+        error:(erro)=>{
+          console.log(erro)
+          this.snackbar.open(
+            "Erro ao adicionar usuário",
+            "OK",{
+              verticalPosition:'top',
+              horizontalPosition:'end',
+              duration:3000
+            }
+          )
+          
+        }
+      })
+    }else{
+      //ira alterar o usuario no banco de dados
+
+    }
+
+  }
+
+  onCancelar(){
+    this.formulario.reset();
+    this.formulario.disable();
+  }
+  // função para buscar as informações e usuários
+  relatorio:any[] = [];
+
+
+  buscaUsuarios(){
+    this.usuarioService.getUsuarios().subscribe({
       next:(resposta)=>{
         console.log(resposta);
-        this.snackbar.open(
-          "Usúario adicionado com sucesso!",
-          "OK",{
-            verticalPosition:'top',
-            horizontalPosition:'end',
-            duration:3000
-
-          }
-        )
-        this.onCancelar
-      },
-      error:(erro)=>{
-        console.log(erro);
-      }
-      })
-  }else{
-  //Irá alterar o uasuário no banco de dados
- 
-}
-}
-
-
-onCancelar(){
-  this.formulario.reset();
-  this.formulario.disable();
-
-
-}
-
-// Função para buscar as informações e usuários
-relatorio:any[] = [];
-
-buscaUsuarios(){
-  this.usuarioService.getUsuarios().subscribe({
-    next:(resposta)=>{
-      console.log(resposta);
-      this.relatorio = resposta.body;
+        this.relatorio = resposta.body;
     },
     error:(erro)=>{
-      console.log(erro);
+      console.log(erro)
     }
-    
-  })
 
-}
+    })
+  }
+
 
 
 }

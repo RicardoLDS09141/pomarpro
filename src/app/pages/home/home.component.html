@@ -1,1 +1,29 @@
 <app-menu></app-menu>
+<div class="pag">
+    <header>
+       <div class="txt">
+        <h1>Bem vindo ao Pomar Pró!</h1>
+        
+       </div>
+       
+    
+
+<div class="relatorio">
+    <h1>Estoque Atual</h1>
+    <table>
+        <tr>
+            <th>Ação</th>
+            <th>Material</th>
+            <th>Quantidade</th>
+          
+        </tr>
+        <tr *ngFor="let home of relatorioTotal">
+            <td><button>Excluir</button></td>
+           
+            <td>{{home.descricao}}</td>
+            <td>{{home.quantidade}}</td>
+            
+        </tr>
+
+
+

@@ -1,58 +1,60 @@
+
 <app-menu></app-menu>
-<div class="pagina">
+<div class="pag">
     <header>
-        <h1>Administração | Cadasto de Materiais</h1>
+        <h1>Administração | Colheita</h1>
     </header>
-    <form>
-        <div>
-            <mat-form-field appearance="outline" color="primary">
-                <mat-label>Nome</mat-label>
-                <input matInput formControlName="nome">
-            </mat-form-field>
-       
-            <mat-form-field appearance="outline" color="primary">
-                <mat-label>Tipo</mat-label>
-                <input matInput formControlName="tipo">
-            </mat-form-field>
-        </div>
+    <form [formGroup]="colheita">
         
-        <div>
             <mat-form-field appearance="outline" color="primary">
-                <mat-label>Valor</mat-label>
-                <input matInput formControlName="valor">
+                <mat-label>Quantidade</mat-label>
+                <input matInput formControlName="quantidade" type="number">
             </mat-form-field>
+            <mat-form-field appearance="outline" color="primary">
+        <mat-label>Data da Colheita</mat-label>
             
-            <mat-form-field appearance="outline" color="primary">
-                <mat-label>Fornecedor</mat-label>
-                <input matInput formControlName="fornecedor">
-            </mat-form-field>
-        </div>
+            <input matInput formControlName="dt_colheita" [matDatepicker]="dt_colheita">
+            <mat-datepicker-toggle matSuffix [for]="dt_colheita"></mat-datepicker-toggle>
+        <mat-datepicker #dt_colheita></mat-datepicker>
+    
+        </mat-form-field> 
+        
+      
 
-        <div class="controles">
-            <button mat-raised-button [disabled]=>Incluir</button>
-            <button mat-raised-button [disabled]=>Salvar</button>
-            <button mat-raised-button [disabled]=>Cancelar</button>
-        </div> 
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Arvore</mat-label>
+            <input matInput formControlName="arvore" type="number">
+        </mat-form-field>
     </form>
- <div class="relatorio">
-    <h2>Cadasto de Materiais</h2>
-    <table>
-        <tr>
-            <th>Ação</th>
-            <th>Nome</th>
-            <th>Tipo</th>
-            <th>Valor</th> 
-            <th>Fornecedor</th>  
-        </tr>
-        <!--<tr *ngFor=" let usuario of material">
-            <td><button>Excluir</button></td>
-            <td>{{usuario.nome}} {{usuario.sobrenome}}</td>
-            <td>{{usuario.telefone}}</td>
-            <td>{{usuario.login}}</td>
-            <td>{{usuario.email}}</td>
-        </tr>-->
-    </table>
 
 
+    <div class="controles">
+        <button mat-stroked-button [disabled]="colheita.enabled" (click)="onIncluir()" color="primary">Incluir</button>
+        <button mat-stroked-button [disabled]="colheita.invalid" (click)="onSalvar()">Salvar</button>
+        <button mat-stroked-button [disabled]="colheita.disabled" (click)="onCancelar()">Cancelar</button>
     </div>
+    <div class="relatorio">
+        <h2>Colheitas cadastradas</h2>
+        <table>
+            <tr>
+                <th>Ação</th>
+                <th>Quantidade</th>
+                <th>Data</th>
+                <th>Arvore</th>
+                
+              
+            </tr>
+            <tr *ngFor="let colheita of relatorio">
+                <td><button>Excluir</button></td>
+                <td>{{colheita.quantidade}}</td>
+                <td>{{colheita.dt_colheita}}</td>
+                <td>{{colheita.tb_arvore_id}}</td>
+               
+            </tr>
+        </table>
+    </div>
+    
 </div>
+
+
+

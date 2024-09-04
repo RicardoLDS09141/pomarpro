@@ -1,9 +1,9 @@
 <app-menu></app-menu>
-<div class="pagina">
+<div class="pag">
     <header>
         <h1>Administração | Cadastro </h1>
     </header>
-    <form>
+    <form [formGroup]="PomarCad">
         <div>
             <mat-form-field appearance="outline" color="primary">
                 <mat-label>Nome</mat-label>
@@ -25,10 +25,10 @@
         </div>
 
         <div class="controles">
-            <button mat-raised-button [disabled]="">Incluir</button>
-            <button mat-raised-button [disabled]="">Salvar</button>
-            <button mat-raised-button [disabled]="">Cancelar</button>
-        </div> 
+            <button mat-stroked-button [disabled]="PomarCad.enabled" (click)="onIncluir()" color="primary">Incluir</button>
+            <button mat-stroked-button [disabled]="PomarCad.invalid" (click)="onSalvar()">Salvar</button>
+            <button mat-stroked-button [disabled]="PomarCad.disabled" (click)="onCancelar()">Cancelar</button>
+        </div>
     </form>
  <div class="relatorio">
     <h2>Cadasto</h2>

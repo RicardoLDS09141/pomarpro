@@ -5,19 +5,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class MaterialService {
+export class PomarCadService {
 
  
 
   constructor(private http:HttpClient) { }
-  public addMaterial(info:any):Observable<any>{
-    return this.http.post("http://localhost:3000/material/add",
+  public addmaterial(info:any):Observable<any>{
+    return this.http.post("http://localhost:3000/pomarcad/add",
     {info},
     {observe:'response'})
   }
 
   public getMaterial():Observable<any>{
-    return this.http.get('http://localhost:3000/material/buscaTodos',
+    return this.http.get('http://localhost:3000/pomarcad/buscaTodos',
     {observe:'response'})
   }
 

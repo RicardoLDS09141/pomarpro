@@ -1,55 +1,55 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ArvoreService } from '../../services/arvore.service';
+import { rotacaoService } from '../../service/rotacao.service';
 
 
 
 @Component({
-  selector: 'app-arvore',
-  templateUrl: './arvore.component.html',
-  styleUrl: './arvore.component.scss'
+  selector: 'app-rotacao',
+  templateUrl: './rotacao.component.html',
+  styleUrl: './rotacao.component.scss'
 })
-export class arvoreComponent {
+export class RotacaoComponent {
   
   constructor(
- private ArvoreService:ArvoreService,
+ private rotacaoService:rotacaoService,
  private snackbar:MatSnackBar
     
   ){
-    this.buscaarvore()
+    this.buscarotacao()
   }
 
 
 
-  arvore:FormGroup = new FormGroup({ 
+  rotacao:FormGroup = new FormGroup({ 
     id:new FormControl(null),
-    defensivo:new FormControl('', Validators.required),
-    fertilizante:new FormControl('', Validators.required),
-    ultima_verif:new FormControl('',Validators.required ),
+   quantidade:new FormControl('', Validators.required),
     tb_tipo_id:new FormControl('', Validators.required),
-    tb_situacao_id:new FormControl('', Validators.required),
+    produto:new FormControl('', Validators.required)
+
+    
    
 
 
   })
   onIncluir(){
-    this.arvore.reset();
-    this.arvore.enable();
+    this.rotacao.reset();
+    this.rotacao.enable();
   }
 
  
   onSalvar(){
     //guarda as informacoes em uma variavel pra melhorar o processo
-    let info = this.arvore.value;
+    let info = this.rotacao.value;
     //verifica se esta inserindo ou alterando com base no valor do id (se for null, esta inserindo, senao esta alterando)
     if(info.id == null){
       //ira inserir no banco de dados um usuario
-      this.ArvoreService.addarvore(info).subscribe({
+      this.rotacaoService.addrotacao(info).subscribe({
         next:(resposta)=>{
           console.log(resposta)
           this.snackbar.open(
-            "arvore adicionado com sucesso",
+            "rotacao adicionado com sucesso",
             "OK",{
               verticalPosition:'top',
               horizontalPosition:'end',
@@ -61,7 +61,7 @@ export class arvoreComponent {
         error:(erro)=>{
           console.log(erro)
           this.snackbar.open(
-            "Erro ao adicionar arvore",
+            "Erro ao adicionar rotacao",
             "OK",{
               verticalPosition:'top',
               horizontalPosition:'end',
@@ -80,15 +80,15 @@ export class arvoreComponent {
   }
 
   onCancelar(){
-    this.arvore.reset();
-    this.arvore.disable();
+    this.rotacao.reset();
+    this.rotacao.disable();
   }
 
   relatorio:any[] = [];
 
 
-  buscaarvore(){
-    this.ArvoreService.getarvore().subscribe({
+  buscarotacao(){
+    this.rotacaoService.getrotacao().subscribe({
       next:(resposta)=>{
         console.log(resposta);
         this.relatorio = resposta.body;
